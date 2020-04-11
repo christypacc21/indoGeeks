@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "onestart": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+		"start": "nodemon server.js",
+		"both": "npm run start & (cd .. && cd frontend && yarn start)",
+		"test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Christy Law, Michelle Lam",
   "license": "ISC",
