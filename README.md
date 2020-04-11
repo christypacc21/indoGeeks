@@ -10,6 +10,6 @@
 `cd frontend && yarn install`
 
 ---
-Authors: Michelle Lam, Christy Law
+Authors: Michelle Lau, Christy Law
 
 
