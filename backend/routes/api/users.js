@@ -69,8 +69,6 @@ router.post("/login", (req, res) => {
 	const password = req.body.password;
 	console.log('req.body.password: ', req.body.password);
 
-	
-
 	// Find user by email
 	User.findOne({ email }).then(user => {
 		// Check if user exists
@@ -147,7 +145,7 @@ router.route('/update/:id').post((req, res) => {
 
 			user.save()
 				.then(() => res.json(`User No.${user.id} updated!`))
-				.catch(err => res.status(400).json('Error: ' + err));
+				.catch(err => res.status(400).json('Error while saving model: ' + err));
 		})
 		.catch(err => res.status(400).json('Error: ' + err));
 });

@@ -22,7 +22,7 @@ app.use(cors());
 // DB Config
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
-	.catch(error => handleError(error));
+	.catch(error => console.log('Error happend while connecting to the DB: ', error.message));
 
 const connection = mongoose.connection;
 connection.once("open", () => {
