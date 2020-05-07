@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { loginUser } from "../../actions/authActions";
 
 class Login extends Component {
   constructor() {
@@ -9,6 +12,25 @@ class Login extends Component {
       password: "",
       errors: {},
     };
+  }
+
+  componentDidMount() {
+    // If logged in and user navigates to Login page, should redirect them to home
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/home");
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/home"); // push user to home when they login
+    }
+
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors,
+      });
+    }
   }
 
   onChange = (e) => {
@@ -22,13 +44,14 @@ class Login extends Component {
       password: this.state.password,
     };
     console.log(userData);
+    this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
   };
 
   render() {
     const { errors } = this.state;
     return (
       <div>
-        <Link to="/">Back to home</Link>
+        <Link to="/">Back to Landing Page</Link>
 
         <div>
           <h4>
@@ -49,7 +72,12 @@ class Login extends Component {
               type="email"
             />
             <label htmlFor="email">Email</label>
+            <span className="red-text">
+              {errors.email}
+              {errors.emailnotfound}
+            </span>
           </div>
+
           <div>
             <input
               onChange={this.onChange}
@@ -59,7 +87,12 @@ class Login extends Component {
               type="password"
             />
             <label htmlFor="password">Password</label>
+            <span className="red-text">
+              {errors.password}
+              {errors.passwordincorrect}
+            </span>
           </div>
+
           <div>
             <button type="submit">Login</button>
           </div>
@@ -69,4 +102,15 @@ class Login extends Component {
   }
 }
 
-export default Login;
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors,
+});
+
+export default connect(mapStateToProps, { loginUser })(Login);

@@ -9,7 +9,8 @@ class Navbar extends Component {
 
         <div id="nav_2">
           (navbar after login) [icon] &nbsp;
-          <Link to="/">Home</Link> &nbsp;
+					<Link to="/">Landing Page</Link> &nbsp;
+          <Link to="/home">Home</Link> &nbsp;
           <Link to="/">Favourite Users</Link> &nbsp;
           <Link to="/">Chatroom</Link> &nbsp;
           <Link to="/">My Profile</Link> &nbsp;
