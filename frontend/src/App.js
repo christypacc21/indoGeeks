@@ -13,7 +13,10 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Home from "./components/home/Home";
+import Home from "./components/layout_main/Home";
+import FavUsers from "./components/layout_main/FavUsers";
+import Chatroom from "./components/layout_main/Chatroom";
+import MyProfile from "./components/layout_main/MyProfile";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -51,6 +54,9 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Switch>
             <PrivateRoute exact path="/home" component={Home} />
+						<PrivateRoute exact path="/favusers" component={FavUsers} />
+						<PrivateRoute exact path="/chatroom" component={Chatroom} />
+						<PrivateRoute exact path="/myprofile" component={MyProfile} />
           </Switch>
         </div>
       </Router>
