@@ -9,22 +9,23 @@
 #### Starting up the app
 
 
-- Installing packages
-##### Backend
-`cd backend && npm install`
-##### Frontend
-`cd frontend && yarn install`
+- Install packages
+  - Backend `cd backend && npm install`
+  - Frontend `cd frontend && yarn install`
+>
 
 
-- `cd backend` and create a `.env` file with the following content:
-`ATLAS_URI = <your mongodb uri>`
-`SECRET_OR_KEY = "<your secret key>"`
+- `cd backend` andthen create a `.env` file with the following content:
+	>
+	```
+	ATLAS_URI = <your mongodb uri>
+	SECRET_OR_KEY = "<your secret key>"
+	```
 
 - Start the app
- - Method1) `cd backend && npm start`+
- `cd frontend && yarn start`
+  - Method1) `cd backend && npm start` + `cd frontend && yarn start`
 
- - Method2) `cd backend && npm run both`
+  - Method2) `cd backend && npm run both`
 
 
 ---
